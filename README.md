@@ -16,7 +16,17 @@ Here, you'll find the source code of the project, which involves the containeriz
  - [License](#license)
 
 ## Overview
-This project aims to develop a containerized web application for diabetes prediction using streamlit. In web application interface, user has to fill following fields : pregnancies,glucose,blood_pressure,skin_thickness,insulin,bmi,dpf and age. After filling required fields, use has to push the result button to get the classification results with confidence score.
+This project aims to develop a containerized web application for diabetes prediction using streamlit. In web application interface, user has to fill following fields : 
+- pregnancies
+- glucose
+- blood_pressure
+- skin_thickness
+- insulin
+- bmi
+- dpf
+- age
+<br>
+After filling required fields, use has to push the result button to get the classification results with confidence score.
 <br>
 Training diabetes classifier involved training different Machine Learning models using GridSearchCV for classifying diabetic and non-diabetic patients based on medical tests data. Several Preprocessing techniques were applied to the data such as EDA, normalization, etc. You can access the classifier source code [here](https://github.com/umairsiddique3171/Machine-Learning-Projects/tree/main/diabetes_prediction).
 
