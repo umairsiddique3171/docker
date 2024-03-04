@@ -1,10 +1,10 @@
 # docker
 Welcome to my GitHub repository dedicated to Docker!
 <br>
-Here, you'll find the source code of the project, which involves the containerization of a streamlit diabetes prediction web app.
+Here, you'll find the source code of the project, which involves the containerization of a Streamlit Diabetes Prediction Web App.
 
 ## Table of Contents
- - [Overview]()
+ - [Overview](#overview)
  - [App Test on Local Host](#app-test-on-local-host)
  - [Docker Installation](#docker-installation)
  - [Docker Setup](#docker-setup)
@@ -12,33 +12,39 @@ Here, you'll find the source code of the project, which involves the containeriz
  - [Build Docker Image](#build-docker-image)
  - [Run Docker Image as a Container](#run-docker-image-as-a-container)
  - [Push Docker Image to Docker Hub](#push-docker-image-to-docker-hub)
- - [Notes]()
- - [License]()
+ - [Notes](#notes)
+ - [License](#license)
+
+## Overview
+This project aims to develop a containerized web application for diabetes prediction using streamlit. In web application interface, user has to fill following fields : pregnancies,glucose,blood_pressure,skin_thickness,insulin,bmi,dpf and age. After filling required fields, use has to push the result button to get the classification results with confidence score.
+<br>
+Training diabetes classifier involved training different Machine Learning models using GridSearchCV for classifying diabetic and non-diabetic patients based on medical tests data. Several Preprocessing techniques were applied to the data such as EDA, normalization, etc. You can access the classifier source code [here](https://github.com/umairsiddique3171/Machine-Learning-Projects/tree/main/diabetes_prediction).
+
 
 ## App Test on Local Host
 1. Clone the repository:
 
-    ```bash
-    git clone https://github.com/umairsiddique3171/diabetes_prediction_web_app_using_streamlit.git
-    cd diabetes_prediction_web_app_using_streamlit
+    ```
+    git clone https://github.com/umairsiddique3171/docker.git
+    cd docker/diabetes_app
     ```
 
 2. Create and activate a virtual environment:
 
-    ```bash
+    ```
     python -m venv env
     .\env\Scripts\activate
     ```
 
 3. Install dependencies:
 
-    ```bash
+    ```
     pip install -r requirements.txt
     ```
 
 4. Run the Streamlit app:
 
-    ```bash
+    ```
     streamlit run app.py
     ```
 
@@ -55,7 +61,7 @@ PS C:\Users\US593> docker
 Terminal should be returning lists of docker commands.
 
 ## Dockerfile Setup 
-Setup "Dockerfile" as mentioned [here]().
+Setup "Dockerfile" as mentioned [here](https://github.com/umairsiddique3171/docker/blob/main/diabetes_app/Dockerfile).
 
 ## Build Docker Image 
 To build docker image, use the following command in your terminal : 
@@ -146,6 +152,11 @@ To push a Docker image to Docker Hub, follow these steps:
     ```
     This command will push the tagged image to your Docker Hub repository. Make sure you have appropriate permissions to push to the repository.
 
+## Notes 
+To learn more about docker, you can access my handwritten notes [here](https://github.com/umairsiddique3171/docker/blob/main/notes.pdf).
 
+## License
+This project is licensed under the [MIT License](https://github.com/umairsiddique3171/docker/blob/main/LICENSE).
 
-
+## Author 
+[@umairsiddique3171](https://github.com/umairsiddique3171)
