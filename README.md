@@ -1,8 +1,50 @@
 # docker
-
-## Installation
-* For Docker Desktop installation, please visit [here](https://www.docker.com/products/docker-desktop/).
+Welcome to my GitHub repository dedicated to Docker!
 <br>
+Here, you'll find the source code of the project, which involves the containerization of a streamlit diabetes prediction web app.
+
+## Table of Contents
+ - [Overview]()
+ - [App Test on Local Host](#app-test-on-local-host)
+ - [Docker Installation](#docker-installation)
+ - [Docker Setup](#docker-setup)
+ - [Dockerfile Setup](#dockerfile-setup)
+ - [Build Docker Image](#build-docker-image)
+ - [Run Docker Image as a Container](#run-docker-image-as-a-container)
+ - [Push Docker Image to Docker Hub](#push-docker-image-to-docker-hub)
+ - [Notes]()
+ - [License]()
+
+## App Test on Local Host
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/umairsiddique3171/diabetes_prediction_web_app_using_streamlit.git
+    cd diabetes_prediction_web_app_using_streamlit
+    ```
+
+2. Create and activate a virtual environment:
+
+    ```bash
+    python -m venv env
+    .\env\Scripts\activate
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Run the Streamlit app:
+
+    ```bash
+    streamlit run app.py
+    ```
+
+5. Access the app in your browser at returned local host (e.g. `http://localhost:80`).
+## Docker Installation
+* For Docker Desktop installation, please visit [here](https://www.docker.com/products/docker-desktop/).
 * To see system requirements, please visit official Docker Documentation [here](https://docs.docker.com/desktop/).
 
 ## Docker Setup 
@@ -13,24 +55,15 @@ PS C:\Users\US593> docker
 Terminal should be returning lists of docker commands.
 
 ## Dockerfile Setup 
-Create a file with name "Dockerfile" and write the code with following steps : 
-1.  Use any base image.
-2. Copy the local directory containing the application files into the container.
-3. Set the working directory inside the container.
-4. Install the Python dependencies listed in requirements.txt.
-5. Command to run when the container starts.
-```
-From python:3.8-alpine
-COPY ./app
-WORKDIR /app
-RUN pip install -r requirements.txt
-CMD python app.py
-```
+Setup "Dockerfile" as mentioned [here]().
 
 ## Build Docker Image 
 To build docker image, use the following command in your terminal : 
 ```
-docker build -t diabetes_app .
+docker build -t <image_name>:<tag> .
+```
+```
+docker build -t diabetes_app:v1.0 .
 ```
 To see whether docker image has been built or not, use the following command in your terminal : 
 ```
@@ -40,25 +73,40 @@ This will show all the docker images in your local host.
 <br>
 If you want to remove docker image, you can use the following command in your terminal : 
 ```
-docker image rm -f diabetes_app
+docker rmi -f <image_name>:<tag>
+docker rmi -f <image_id>
 ```
 If you want to rename docker image, you can use the following command in your terminal : 
 ```
-docker tag <previous_name> <new_name>
+docker tag <image_name>:<tag> <new_name>:<tag>
 ```
 
 ## Run Docker Image as a Container
 To run docker image as a container, type the following command in your terminal : 
 ```
-docker run -p <host-port>:<container-port> diabetes_app
+docker run -p <host_port>:<container_port> <image_name>:<tag>
+docker run -p <host_port>:<container_port> <image_id>
 ```
+```
+docker run -p 80:80 diabetes_app:v1.0
+```
+In Windows, basically, this url `http://0.0.0.0:80` usually doesn't work. Try running `http://localhost/` in your browser.
+<br>
 To check whether the container is running, type the following command in your terminal : 
 ```
 docker ps
 ```
 To stop the container from running, type the following command in your terminal : 
 ```
-docker stop <container-id>
+docker stop <container_id>
+```
+To view stopped containers, type the following command in your terminal : 
+```
+docker ps -a
+```
+To delete all the stopped containers, as they take up some space, type the following command in your terminal : 
+```
+docker container prune
 ```
 
 ## Push Docker Image to Docker Hub
@@ -69,7 +117,7 @@ To push a Docker image to Docker Hub, follow these steps:
 
     Before pushing the image, you need to authenticate yourself with your Docker Hub credentials. Use the following command:
    
-    ```bash
+    ```
     docker login
     ```
 
@@ -82,12 +130,8 @@ To push a Docker image to Docker Hub, follow these steps:
     ```
     docker tag <image_name>:<tag> <username>/<repository>:<tag>
     ```
-
-    Replace `<image_name>` with the name of your Docker image, `<tag>` with the tag you want to assign to the image, `<username>` with your Docker Hub username, and `<repository>` with the name of the repository you want to push the image to.
-    <br>
-    In my case, it would be: 
     ```
-    docker tag diabetes_app umairsiddique3171/diabetes_app
+    docker tag diabetes_app:v1.0 umairsiddique3171/diabetes_app:v1.0
     ```
 
 3. **Push the Docker Image**:
@@ -97,13 +141,10 @@ To push a Docker image to Docker Hub, follow these steps:
     ```
     docker push <username>/<repository>:<tag>
     ```
-    That is : 
     ```
-    docker push umairsiddique3171/diabetes_app
+    docker push umairsiddique3171/diabetes_app:v1.0
     ```
     This command will push the tagged image to your Docker Hub repository. Make sure you have appropriate permissions to push to the repository.
-
-Following these steps will allow you to push your Docker image to Docker Hub successfully. Make sure to replace placeholders like `<image_name>`, `<tag>`, and `<username>/<repository>` with your actual values.
 
 
 
